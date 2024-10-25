@@ -1,0 +1,8 @@
+chatlogs/
+__pycache__
+.vscode
+platform/sam3x/build
+pycache/
+*/pycache/
+.idea/
+.env

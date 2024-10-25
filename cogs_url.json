@@ -1,0 +1,18 @@
+{"cogs":
+  [
+    "cogs.messages.delete",
+    "cogs.messages.edit",
+    "cogs.members.join",
+    "cogs.members.leave",
+    "cogs.members.update",
+    "cogs.channels.create",
+    "cogs.channels.delete",
+    "cogs.channels.update",
+    "cogs.emoji.create",
+    "cogs.emoji.remove",
+    "cogs.emoji.update",
+    "cogs.roles.create",
+    "cogs.roles.delete",
+    "cogs.roles.update"
+  ]
+}
