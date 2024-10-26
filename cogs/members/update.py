@@ -1,4 +1,3 @@
-from datetime import datetime
 import datetime
 import disnake
 from disnake.ext import commands
@@ -32,7 +31,7 @@ class UpdateMember(commands.Cog):
             changes.append(f"Статус ожидания изменён на {'ожидает' if after.pending else 'не ожидает'}")
 
 
-        current_time = datetime.now.strftime("%Y-%m-%d %H:%M:%S")
+        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         if changes:
             embed = disnake.Embed(title="Обновление профиля участника", color=await getcolor(after.guild.id))
             embed.add_field(name="Пользователь", value=after.mention)

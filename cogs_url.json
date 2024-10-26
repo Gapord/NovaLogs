@@ -13,6 +13,7 @@
     "cogs.emoji.update",
     "cogs.roles.create",
     "cogs.roles.delete",
-    "cogs.roles.update"
+    "cogs.roles.update",
+    "cogs.settings"
   ]
 }
