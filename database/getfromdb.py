@@ -9,7 +9,7 @@ async def getchan(servid):
     elif c.dbstatus == 2:
         server_data = await GetServerDataMySQL(servid).fetch_server_data()
     else:
-        return None  # Или обработка для неподдерживаемого значения c.dbstatus
+        return None  
 
     return server_data["channel"] if server_data else None
 
@@ -19,7 +19,7 @@ async def getcolor(servid):
     elif c.dbstatus == 2:
         server_data = await GetServerDataMySQL(servid).fetch_server_data()
     else:
-        return disnake.Color.default()  # Или обработка для неподдерживаемого значения c.dbstatus
+        return disnake.Color.default()  
 
     if server_data:
         color_name = server_data["color"]
@@ -30,8 +30,8 @@ async def getcolor(servid):
             "yellow": disnake.Color.yellow(),
             "orange": disnake.Color.orange(),
             "purple": disnake.Color.purple(),
-            "black": disnake.Color.from_rgb(0, 0, 0),  # Black
-            "white": disnake.Color.from_rgb(255, 255, 255)  # White
+            "black": disnake.Color.from_rgb(0, 0, 0),  
+            "white": disnake.Color.from_rgb(255, 255, 255)  
         }
         return colors.get(color_name, disnake.Color.default())
 

@@ -11,8 +11,8 @@ colors = {
     "yellow": disnake.Color.yellow(),
     "orange": disnake.Color.orange(),
     "purple": disnake.Color.purple(),
-    "black": disnake.Color.from_rgb(0, 0, 0),  # Black
-    "white": disnake.Color.from_rgb(255, 255, 255)  # White
+    "black": disnake.Color.from_rgb(0, 0, 0),  
+    "white": disnake.Color.from_rgb(255, 255, 255)  
 }
 
 class BotSettings(commands.Cog):

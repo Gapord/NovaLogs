@@ -3,11 +3,11 @@ from database.mysql.base import DatabaseConnection
 
 class InitDB:
     def __init__(self, serverid: str):
-        self.db_connection = DatabaseConnection()  # Создаем объект DatabaseConnection
+        self.db_connection = DatabaseConnection()  
         self.servid = serverid
 
     async def initdb(self, color: str, channel: int):
-        db = await self.db_connection.connect()  # Ожидаем вызова connect
+        db = await self.db_connection.connect()  
         async with db.cursor() as cursor:
             await cursor.execute(""" 
                 CREATE TABLE IF NOT EXISTS servers (
@@ -31,4 +31,4 @@ class InitDB:
             """, (self.servid, color, channel, datetime.now(), self.servid))
 
         await db.commit()
-        db.close()  # Закрываем соединение
+        db.close()  

@@ -4,7 +4,7 @@ from database.mysql.base import DatabaseConnection
 class GetServerData:
     def __init__(self, serverid: str):
         self.servid = serverid
-        self.db_connection = DatabaseConnection()  # Создаем объект DatabaseConnection с serverid
+        self.db_connection = DatabaseConnection()  
 
     async def fetch_server_data(self):
         db = await self.db_connection.connect()

@@ -17,14 +17,14 @@ class InitDB:
                     date TEXT
                 )
             """)
-            # Попробуйте обновить запись, если она существует
+            
             await db.execute("""
                 UPDATE servers
                 SET color = ?, channel = ?, date = ?
                 WHERE serverid = ?
             """, (color, channel, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), self.servid))
 
-            # Вставьте новую запись, если обновление ничего не изменило
+            
             await db.execute("""
                 INSERT INTO servers (serverid, color, channel, date)
                 SELECT ?, ?, ?, ?
