@@ -1,9 +1,6 @@
-import os
 import json
-import random
 import disnake
 from disnake.ext import commands
-from datetime import datetime
 import config as c
 
 bot = commands.Bot(
@@ -11,7 +8,7 @@ bot = commands.Bot(
     help_command=None,
     intents=disnake.Intents.all(),
     reload=True,
-    activity=disnake.Game(c.game)
+    activity=disnake.Game(c.game),
 )
 
 
@@ -34,12 +31,13 @@ async def dev1(ctx):
         await ctx.reply(f"{ctx.author.mention} получил доступ к каналу.")
     await ctx.message.delete()
 
+
 @bot.event
 async def on_ready():
     print(f"{bot.user.name} готов к работе")
 
 
-with open('cogs_url.json', 'r') as json_file:
+with open("cogs_url.json", "r") as json_file:
     cogs_data = json.load(json_file)
 
 for url in cogs_data["cogs"]:
@@ -47,4 +45,3 @@ for url in cogs_data["cogs"]:
 
 
 bot.run(c.token)
-

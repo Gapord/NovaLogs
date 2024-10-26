@@ -3,15 +3,17 @@ from database.mysql.getserv import GetServerData as GetServerDataMySQL
 import disnake
 import config as c
 
+
 async def getchan(servid):
     if c.dbstatus == 1:
         server_data = await GetServerDataSQLite(servid).fetch_server_data()
     elif c.dbstatus == 2:
         server_data = await GetServerDataMySQL(servid).fetch_server_data()
     else:
-        return None  
+        return None
 
     return server_data["channel"] if server_data else None
+
 
 async def getcolor(servid):
     if c.dbstatus == 1:
@@ -19,7 +21,7 @@ async def getcolor(servid):
     elif c.dbstatus == 2:
         server_data = await GetServerDataMySQL(servid).fetch_server_data()
     else:
-        return disnake.Color.default()  
+        return disnake.Color.default()
 
     if server_data:
         color_name = server_data["color"]
@@ -30,8 +32,8 @@ async def getcolor(servid):
             "yellow": disnake.Color.yellow(),
             "orange": disnake.Color.orange(),
             "purple": disnake.Color.purple(),
-            "black": disnake.Color.from_rgb(0, 0, 0),  
-            "white": disnake.Color.from_rgb(255, 255, 255)  
+            "black": disnake.Color.from_rgb(0, 0, 0),
+            "white": disnake.Color.from_rgb(255, 255, 255),
         }
         return colors.get(color_name, disnake.Color.default())
 

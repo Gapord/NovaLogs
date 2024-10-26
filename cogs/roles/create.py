@@ -3,6 +3,7 @@ from disnake.ext import commands
 import datetime
 from database.getfromdb import getchan, getcolor
 
+
 class CreateRole(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -12,7 +13,9 @@ class CreateRole(commands.Cog):
         guild = role.guild
         log = self.bot.get_channel(await getchan(guild.id))
 
-        async for entry in guild.audit_logs(action=disnake.AuditLogAction.role_create, limit=1):
+        async for entry in guild.audit_logs(
+            action=disnake.AuditLogAction.role_create, limit=1
+        ):
             creator = entry.user
             break
         else:
@@ -21,12 +24,18 @@ class CreateRole(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        embed = disnake.Embed(title="Создание роли", color=await getcolor(guild.id))
+        embed = disnake.Embed(
+            title="Создание роли", color=await getcolor(guild.id)
+        )
         embed.add_field(name="Роль", value=f"{role.name} (ID: {role.id})")
-        embed.add_field(name="Создано пользователем", value=creator.mention if creator else "Неизвестен")
+        embed.add_field(
+            name="Создано пользователем",
+            value=creator.mention if creator else "Неизвестен",
+        )
         embed.add_field(name="Время создания", value=current_time)
 
         await log.send(embed=embed)
+
 
 def setup(bot: commands.Bot):
     bot.add_cog(CreateRole(bot))

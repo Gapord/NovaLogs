@@ -11,9 +11,10 @@ colors = {
     "yellow": disnake.Color.yellow(),
     "orange": disnake.Color.orange(),
     "purple": disnake.Color.purple(),
-    "black": disnake.Color.from_rgb(0, 0, 0),  
-    "white": disnake.Color.from_rgb(255, 255, 255)  
+    "black": disnake.Color.from_rgb(0, 0, 0),
+    "white": disnake.Color.from_rgb(255, 255, 255),
 }
+
 
 class BotSettings(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -21,14 +22,20 @@ class BotSettings(commands.Cog):
 
     @commands.slash_command(description="Настройка сервера")
     async def setting(
-        self, 
+        self,
         ctx,
         channel: disnake.abc.GuildChannel,
-        color: str = commands.Param(choices=list(colors.keys()), description="Выберите цвет для сервера")
+        color: str = commands.Param(
+            choices=list(colors.keys()),
+            description="Выберите цвет для сервера",
+        ),
     ):
         if not ctx.author.guild_permissions.administrator:
             embed = disnake.Embed(title="Ошибка", color=disnake.Color.red())
-            embed.add_field(name="", value="Для выполнения этой команды у вас должны быть права администратора.")
+            embed.add_field(
+                name="",
+                value="Для выполнения этой команды у вас должны быть права администратора.",
+            )
             await ctx.send(embed=embed, ephemeral=True)
             return
         if c.dbstatus == 1:
@@ -39,13 +46,13 @@ class BotSettings(commands.Cog):
             await init_db.initdb(color, channel.id)
 
         embed = disnake.Embed(
-            title="Настройки сервера обновлены",
-            color=colors[color]
+            title="Настройки сервера обновлены", color=colors[color]
         )
         embed.add_field(name="Канал логов", value=f"<#{channel.id}>")
         embed.add_field(name="Цвет эмбедов", value=color.capitalize())
-        
+
         await ctx.send(embed=embed)
+
 
 def setup(bot: commands.Bot):
     bot.add_cog(BotSettings(bot))
