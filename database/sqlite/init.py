@@ -5,7 +5,7 @@ import config as c
 class InitDB:
     def __init__(self, servid):
         self.servid = servid
-        self.db_path = f"database/sqlite/bases/{self.servid}.db"
+        self.db_path = f"database/sqlite/bases/servers.db"
 
     async def initdb(self, color, channel):
         async with aiosqlite.connect(self.db_path) as db:

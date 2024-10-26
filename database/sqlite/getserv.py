@@ -3,7 +3,7 @@ import aiosqlite
 class GetServerData:
     def __init__(self, servid):
         self.servid = servid
-        self.db_path = f"database/sqlite/bases/{self.servid}.db"
+        self.db_path = f"database/sqlite/bases/servers.db"
 
     async def fetch_server_data(self):
         async with aiosqlite.connect(self.db_path) as db:

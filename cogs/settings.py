@@ -1,6 +1,8 @@
 import disnake
 from disnake.ext import commands
-from database.sqlite.init import InitDB
+from database.sqlite.init import InitDB as InitDBsqlite
+from database.mysql.init import InitDB as InitDBmysql
+import config as c
 
 colors = {
     "blue": disnake.Color.blue(),
@@ -29,8 +31,12 @@ class BotSettings(commands.Cog):
             embed.add_field(name="", value="Для выполнения этой команды у вас должны быть права администратора.")
             await ctx.send(embed=embed, ephemeral=True)
             return
-        init_db = InitDB(ctx.guild.id)
-        await init_db.initdb(color, channel.id)
+        if c.dbstatus == 1:
+            init_db = InitDBsqlite(ctx.guild.id)
+            await init_db.initdb(color, channel.id)
+        elif c.dbstatus == 2:
+            init_db = InitDBmysql(ctx.guild.id)
+            await init_db.initdb(color, channel.id)
 
         embed = disnake.Embed(
             title="Настройки сервера обновлены",

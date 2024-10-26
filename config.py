@@ -8,4 +8,4 @@ token = os.getenv("TOKEN")
 game = "by Gapord"
 pref = "."
 
-dbstatus = 1 # 1 → sqlite, 2 → mysql
+dbstatus = 2 # 1 → sqlite, 2 → mysql
