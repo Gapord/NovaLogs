@@ -2,6 +2,7 @@ import json
 import disnake
 from disnake.ext import commands
 import config as c
+from database.getfromdb import getchan
 
 bot = commands.Bot(
     command_prefix=c.pref,
@@ -13,8 +14,8 @@ bot = commands.Bot(
 
 
 @bot.command()
-async def dev1(ctx):
-    channel = bot.get_channel(1168620321348255754)
+async def devlog(ctx):
+    channel = bot.get_channel(await getchan(ctx.guild.id))
     if channel is None:
         await ctx.reply("Канал не найден.")
         return
