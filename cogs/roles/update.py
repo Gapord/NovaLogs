@@ -1,6 +1,8 @@
+import datetime
+
 import disnake
 from disnake.ext import commands
-import datetime
+
 from database.getfromdb import getchan, getcolor
 
 
@@ -9,9 +11,7 @@ class UpdateRole(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_guild_role_update(
-        self, before: disnake.Role, after: disnake.Role
-    ):
+    async def on_guild_role_update(self, before: disnake.Role, after: disnake.Role):
         guild = after.guild
         log = self.bot.get_channel(await getchan(guild.id))
 
@@ -29,9 +29,7 @@ class UpdateRole(commands.Cog):
             changes.append(f"Имя изменено с `{before.name}` на `{after.name}`")
 
         if before.color != after.color:
-            changes.append(
-                f"Цвет изменён с `{before.color}` на `{after.color}`"
-            )
+            changes.append(f"Цвет изменён с `{before.color}` на `{after.color}`")
 
         if before.hoist != after.hoist:
             changes.append(
@@ -52,13 +50,9 @@ class UpdateRole(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        embed = disnake.Embed(
-            title="Обновление роли", color=await getcolor(guild.id)
-        )
+        embed = disnake.Embed(title="Обновление роли", color=await getcolor(guild.id))
         embed.add_field(name="Роль", value=f"{after.name} (ID: {after.id})")
-        embed.add_field(
-            name="Изменения", value="\n".join(changes), inline=False
-        )
+        embed.add_field(name="Изменения", value="\n".join(changes), inline=False)
         embed.add_field(
             name="Обновлено пользователем",
             value=updater.mention if updater else "Неизвестен",

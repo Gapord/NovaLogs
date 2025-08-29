@@ -1,6 +1,8 @@
+import datetime
+
 import disnake
 from disnake.ext import commands
-import datetime
+
 from database.getfromdb import getchan, getcolor
 
 
@@ -38,9 +40,7 @@ class CreateChannel(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        embed = disnake.Embed(
-            title="Создание канала", color=await getcolor(guild.id)
-        )
+        embed = disnake.Embed(title="Создание канала", color=await getcolor(guild.id))
         embed.add_field(name="Тип канала", value=channel_type)
         embed.add_field(name="Имя канала", value=channel.name)
         embed.add_field(name="Канал", value=f"<#{channel.id}>")

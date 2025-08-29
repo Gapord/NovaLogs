@@ -1,5 +1,6 @@
-import aiomysql
 import os
+
+import aiomysql
 from dotenv import load_dotenv
 
 load_dotenv()

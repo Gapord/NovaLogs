@@ -1,6 +1,7 @@
 import disnake
 from disnake.ext import commands
-from database.getfromdb import getcolor, getchan
+
+from database.getfromdb import getchan, getcolor
 
 
 class DeleteMSG(commands.Cog):
@@ -31,10 +32,7 @@ class DeleteMSG(commands.Cog):
         embed.set_footer(text=f"Удалил {deleter}")
 
         if message.attachments:
-            files = [
-                await attachment.to_file()
-                for attachment in message.attachments
-            ]
+            files = [await attachment.to_file() for attachment in message.attachments]
             await log.send(embed=embed, files=files)
         else:
             await log.send(embed=embed)

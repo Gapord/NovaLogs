@@ -1,7 +1,8 @@
-from database.sqlite.getserv import GetServerData as GetServerDataSQLite
-from database.mysql.getserv import GetServerData as GetServerDataMySQL
 import disnake
+
 import config as c
+from database.mysql.getserv import GetServerData as GetServerDataMySQL
+from database.sqlite.getserv import GetServerData as GetServerDataSQLite
 
 
 async def getchan(servid):

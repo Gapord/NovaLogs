@@ -1,6 +1,8 @@
+import datetime
+
 import disnake
 from disnake.ext import commands
-import datetime
+
 from database.getfromdb import getchan, getcolor
 
 
@@ -38,13 +40,9 @@ class DeleteChannel(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        embed = disnake.Embed(
-            title="Удаление канала", color=await getcolor(guild.id)
-        )
+        embed = disnake.Embed(title="Удаление канала", color=await getcolor(guild.id))
         embed.add_field(name="Тип канала", value=channel_type)
-        embed.add_field(
-            name="Имя канала", value=f"{channel.name} (ID: {channel.id})"
-        )
+        embed.add_field(name="Имя канала", value=f"{channel.name} (ID: {channel.id})")
         embed.add_field(
             name="Ответственный",
             value=deleter.mention if deleter else "Неизвестен",

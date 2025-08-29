@@ -1,6 +1,8 @@
+import datetime
+
 import disnake
 from disnake.ext import commands
-import datetime
+
 from database.getfromdb import getchan, getcolor
 
 
@@ -62,13 +64,9 @@ class UpdateChannel(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        embed = disnake.Embed(
-            title="Обновление канала", color=await getcolor(guild.id)
-        )
+        embed = disnake.Embed(title="Обновление канала", color=await getcolor(guild.id))
         embed.add_field(name="Канал", value=f"{after.name} (ID: {after.id})")
-        embed.add_field(
-            name="Изменения", value="\n".join(changes), inline=False
-        )
+        embed.add_field(name="Изменения", value="\n".join(changes), inline=False)
         embed.add_field(
             name="Ответственный",
             value=updater.mention if updater else "Неизвестен",

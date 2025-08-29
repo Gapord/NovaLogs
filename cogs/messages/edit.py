@@ -1,5 +1,6 @@
 import disnake
 from disnake.ext import commands
+
 from database.getfromdb import getchan, getcolor
 
 
@@ -20,9 +21,7 @@ class EditMSG(commands.Cog):
         )
         embed.add_field(name="Автор", value=f"{after.author.mention}")
         embed.add_field(name="Канал", value=f"<#{after.channel.id}>")
-        embed.add_field(
-            name="Сообщение до", value=f"{before.content}", inline=False
-        )
+        embed.add_field(name="Сообщение до", value=f"{before.content}", inline=False)
         embed.add_field(name="Сообщение после", value=f"{after.content}")
         await log.send(embed=embed)
 

@@ -1,6 +1,8 @@
+import datetime
+
 import disnake
 from disnake.ext import commands
-import datetime
+
 from database.getfromdb import getchan, getcolor
 
 
@@ -26,9 +28,7 @@ class LeaveMember(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        embed = disnake.Embed(
-            title="Выход с сервера", color=await getcolor(guild.id)
-        )
+        embed = disnake.Embed(title="Выход с сервера", color=await getcolor(guild.id))
         embed.add_field(name="Пользователь", value=member.mention)
         embed.add_field(name="Причина выхода", value=reason)
         embed.add_field(name="Точное время", value=current_time, inline=False)

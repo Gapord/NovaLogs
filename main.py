@@ -1,6 +1,8 @@
 import json
+
 import disnake
 from disnake.ext import commands
+
 import config as c
 from database.getfromdb import getchan
 
@@ -11,9 +13,6 @@ bot = commands.Bot(
     reload=True,
     activity=disnake.Game(c.game),
 )
-
-
-
 
 
 @bot.event

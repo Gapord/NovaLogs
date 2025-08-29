@@ -1,8 +1,9 @@
 import disnake
 from disnake.ext import commands
-from database.sqlite.init import InitDB as InitDBsqlite
-from database.mysql.init import InitDB as InitDBmysql
+
 import config as c
+from database.mysql.init import InitDB as InitDBmysql
+from database.sqlite.init import InitDB as InitDBsqlite
 
 colors = {
     "blue": disnake.Color.blue(),
@@ -40,14 +41,12 @@ class BotSettings(commands.Cog):
             return
         if c.dbstatus == 1:
             init_db = InitDBsqlite(ctx.guild.id)
-            await init_db.initdb(color, channel.id)
         elif c.dbstatus == 2:
             init_db = InitDBmysql(ctx.guild.id)
-            await init_db.initdb(color, channel.id)
 
-        embed = disnake.Embed(
-            title="Настройки сервера обновлены", color=colors[color]
-        )
+        await init_db.initdb(color, channel.id)
+
+        embed = disnake.Embed(title="Настройки сервера обновлены", color=colors[color])
         embed.add_field(name="Канал логов", value=f"<#{channel.id}>")
         embed.add_field(name="Цвет эмбедов", value=color.capitalize())
 
