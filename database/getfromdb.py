@@ -6,9 +6,9 @@ from database.sqlite.getserv import GetServerData as GetServerDataSQLite
 
 
 async def getchan(servid):
-    if c.dbstatus == 1:
+    if c.DBSTATUS == 1:
         server_data = await GetServerDataSQLite(servid).fetch_server_data()
-    elif c.dbstatus == 2:
+    elif c.DBSTATUS == 2:
         server_data = await GetServerDataMySQL(servid).fetch_server_data()
     else:
         return None
@@ -17,9 +17,9 @@ async def getchan(servid):
 
 
 async def getcolor(servid):
-    if c.dbstatus == 1:
+    if c.DBSTATUS == 1:
         server_data = await GetServerDataSQLite(servid).fetch_server_data()
-    elif c.dbstatus == 2:
+    elif c.DBSTATUS == 2:
         server_data = await GetServerDataMySQL(servid).fetch_server_data()
     else:
         return disnake.Color.default()

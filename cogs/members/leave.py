@@ -21,7 +21,7 @@ class LeaveMember(commands.Cog):
                 if entry.action == disnake.AuditLogAction.kick:
                     reason = "Кик"
                     break
-                elif entry.action == disnake.AuditLogAction.ban:
+                if entry.action == disnake.AuditLogAction.ban:
                     reason = "Бан"
                     break
 

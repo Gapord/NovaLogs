@@ -39,10 +39,15 @@ class BotSettings(commands.Cog):
             )
             await ctx.send(embed=embed, ephemeral=True)
             return
-        if c.dbstatus == 1:
+        if c.DBSTATUS == 1:
             init_db = InitDBsqlite(ctx.guild.id)
-        elif c.dbstatus == 2:
+        elif c.DBSTATUS == 2:
             init_db = InitDBmysql(ctx.guild.id)
+        else:
+            await ctx.send(
+                "В настройках бота неверно указан тип базы данных.", ephemeral=True
+            )
+            return
 
         await init_db.initdb(color, channel.id)
 

@@ -4,14 +4,13 @@ import disnake
 from disnake.ext import commands
 
 import config as c
-from database.getfromdb import getchan
 
 bot = commands.Bot(
-    command_prefix=c.pref,
+    command_prefix=c.PREF,
     help_command=None,
     intents=disnake.Intents.all(),
     reload=True,
-    activity=disnake.Game(c.game),
+    activity=disnake.Game(c.GAME),
 )
 
 
@@ -20,11 +19,11 @@ async def on_ready():
     print(f"{bot.user.name} готов к работе")
 
 
-with open("cogs_url.json", "r") as json_file:
+with open("cogs_url.json", "r", encoding="utf-8") as json_file:
     cogs_data = json.load(json_file)
 
 for url in cogs_data["cogs"]:
     bot.load_extension(url)
 
 
-bot.run(c.token)
+bot.run(c.TOKEN)

@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-token = os.getenv("TOKEN")
+TOKEN = os.getenv("TOKEN")
 
-game = "by Gapord"
-pref = "."
+GAME = "by Gapord"
+PREF = "."
 
-dbstatus = 1  # 1 → sqlite, 2 → mysql
+DBSTATUS = 1  # 1 → sqlite, 2 → mysql
