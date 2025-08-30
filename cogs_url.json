@@ -1,19 +1,19 @@
 {"cogs":
   [
-    "cogs.messages.delete",
-    "cogs.messages.edit",
-    "cogs.members.join",
-    "cogs.members.leave",
-    "cogs.members.update",
-    "cogs.channels.create",
-    "cogs.channels.delete",
-    "cogs.channels.update",
-    "cogs.emoji.create",
-    "cogs.emoji.remove",
-    "cogs.emoji.update",
-    "cogs.roles.create",
-    "cogs.roles.delete",
-    "cogs.roles.update",
-    "cogs.settings"
+    "src.cogs.messages.delete",
+    "src.cogs.messages.edit",
+    "src.cogs.members.join",
+    "src.cogs.members.leave",
+    "src.cogs.members.update",
+    "src.cogs.channels.create",
+    "src.cogs.channels.delete",
+    "src.cogs.channels.update",
+    "src.cogs.emoji.create",
+    "src.cogs.emoji.remove",
+    "src.cogs.emoji.update",
+    "src.cogs.roles.create",
+    "src.cogs.roles.delete",
+    "src.cogs.roles.update",
+    "src.cogs.settings"
   ]
 }
