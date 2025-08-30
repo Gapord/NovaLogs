@@ -21,9 +21,10 @@ async def on_slash_command_error(
     ):
     match type(error):
         case commands.BadColourArgument:
-                interaction.send("Неверный ввод цвета!", ephemeral=True)
+                await interaction.send("Неверный ввод цвета!", ephemeral=True)
         case commands.MissingPermissions:
-            interaction.send("У вас нет прав для выполнения данной команды!", ephemeral=True)
+            await interaction.send("У вас нет прав для выполнения данной команды!", ephemeral=True)
+        case _: pass
 
 with open("cogs_url.json", "r") as json_file:
     cogs_data = json.load(json_file)
