@@ -6,4 +6,4 @@ pycache/
 */pycache/
 .idea/
 .env
-database/sqlite/bases
+database/sqlite/bases/
