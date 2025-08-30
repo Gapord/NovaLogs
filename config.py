@@ -10,7 +10,7 @@ token = os.getenv("TOKEN")
 game = "by Gapord"
 pref = "."
 
-dbstatus = "sqlite"  # sqlite or mysql
+dbstatus = os.getenv("DB_TYPE")
 
 if dbstatus == "sqlite":
     db_path = "src/database/sqlite/bases/guilds.db"
