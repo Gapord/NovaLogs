@@ -16,7 +16,7 @@ dbstatus = os.getenv("DB_TYPE")
 if dbstatus == "sqlite":
     db_path = "src/database/sqlite/guilds.db"
 
-if dbstatus == "mysql":
+if dbstatus in ["mysql", "postgresql"]:
     db_host = os.getenv("DB_HOST")
     db_user = os.getenv("DB_USER")
     password = os.getenv("DB_PASSWORD")

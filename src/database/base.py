@@ -8,12 +8,15 @@ import config as c
 from src.database.models.guild import Guild
 from src.database.mysql.base import MySQLDatabase
 from src.database.sqlite.base import SQLiteDatabase
+from src.database.postgresql.base import PostgreSQLDatabase
 
 
 class Database:
     def __init__(self):
         if c.dbstatus == "mysql":
             self._db = MySQLDatabase()
+        elif c.dbstatus == "postgresql":
+            self._db = PostgreSQLDatabase()
         else:
             self._db = SQLiteDatabase()
 
