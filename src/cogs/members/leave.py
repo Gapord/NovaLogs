@@ -15,7 +15,7 @@ class LeaveMember(commands.Cog):
         guild_data = await self.bot.db.fetch_guild_data(member.guild.id)
         if guild_data is None:
             return
-        
+
         log = self.bot.get_channel(guild_data.channel_id)
 
         reason = "Самовольно"
@@ -31,9 +31,7 @@ class LeaveMember(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        embed = disnake.Embed(
-            title="Выход с сервера", color=guild_data.color
-        )
+        embed = disnake.Embed(title="Выход с сервера", color=guild_data.color)
         embed.add_field(name="Пользователь", value=member.mention)
         embed.add_field(name="Причина выхода", value=reason)
         embed.add_field(name="Точное время", value=current_time, inline=False)

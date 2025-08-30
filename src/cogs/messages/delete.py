@@ -22,7 +22,7 @@ class DeleteMSG(commands.Cog):
         guild_data = await self.bot.db.fetch_guild_data(message.guild.id)
         if guild_data is None:
             return
-        
+
         log = self.bot.get_channel(guild_data.channel_id)
 
         embed = disnake.Embed(title="Удаление сообщения", color=guild_data.color)
@@ -32,10 +32,7 @@ class DeleteMSG(commands.Cog):
         embed.set_footer(text=f"Удалил {deleter}")
 
         if message.attachments:
-            files = [
-                await attachment.to_file()
-                for attachment in message.attachments
-            ]
+            files = [await attachment.to_file() for attachment in message.attachments]
             await log.send(embed=embed, files=files)
         else:
             await log.send(embed=embed)

@@ -7,3 +7,4 @@ pycache/
 .idea/
 .env
 database/sqlite/bases/
+**/*.db

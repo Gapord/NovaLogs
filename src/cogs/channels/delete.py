@@ -15,7 +15,7 @@ class DeleteChannel(commands.Cog):
         guild_data = await self.bot.db.fetch_guild_data(channel.guild.id)
         if guild_data is None:
             return
-        
+
         log = self.bot.get_channel(guild_data.channel_id)
 
         async for entry in channel.guild.audit_logs(
@@ -31,9 +31,7 @@ class DeleteChannel(commands.Cog):
 
         embed = disnake.Embed(title="Удаление канала", color=guild_data.color)
         embed.add_field(name="Тип канала", value=channel.type.name)
-        embed.add_field(
-            name="Имя канала", value=f"{channel.name} (ID: {channel.id})"
-        )
+        embed.add_field(name="Имя канала", value=f"{channel.name} (ID: {channel.id})")
         embed.add_field(
             name="Ответственный",
             value=deleter.mention if deleter else "Неизвестен",

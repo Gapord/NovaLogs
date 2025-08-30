@@ -15,7 +15,7 @@ class CreateChannel(commands.Cog):
         guild_data = await self.bot.db.fetch_guild_data(channel.guild.id)
         if guild_data is None:
             return
-        
+
         log = self.bot.get_channel(guild_data.channel_id)
 
         async for entry in channel.guild.audit_logs(

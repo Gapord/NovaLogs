@@ -1,9 +1,9 @@
 import disnake
 from disnake.ext import commands
 
+import config as c
 from src.database.base import Database
 
-import config as c
 
 class CustomClient(commands.Bot):
     def __init__(self):
@@ -12,7 +12,7 @@ class CustomClient(commands.Bot):
             help_command=None,
             intents=disnake.Intents.all(),
             reload=True,
-            activity=disnake.Game(c.game),
+            activity=disnake.Activity(type=disnake.ActivityType.watching, name=c.view),
         )
 
         self.db = Database()

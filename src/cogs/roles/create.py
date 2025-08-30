@@ -6,7 +6,6 @@ from disnake.ext import commands
 from src.classes.custom_client import CustomClient
 
 
-
 class CreateRole(commands.Cog):
     def __init__(self, bot: CustomClient):
         self.bot = bot
@@ -16,7 +15,7 @@ class CreateRole(commands.Cog):
         guild_data = await self.bot.db.fetch_guild_data(role.guild.id)
         if guild_data is None:
             return
-        
+
         log = self.bot.get_channel(guild_data.channel_id)
 
         async for entry in role.guild.audit_logs(
@@ -30,9 +29,7 @@ class CreateRole(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-        embed = disnake.Embed(
-            title="Создание роли", color=guild_data.color
-        )
+        embed = disnake.Embed(title="Создание роли", color=guild_data.color)
         embed.add_field(name="Роль", value=f"{role.name} (ID: {role.id})")
         embed.add_field(
             name="Создано пользователем",

@@ -1,19 +1,20 @@
+import os
+
 import disnake
 from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
 
 token = os.getenv("TOKEN")
 
-game = "by Gapord"
+view = "за порядком на сервере"
 pref = "."
 
 dbstatus = os.getenv("DB_TYPE")
 
 if dbstatus == "sqlite":
-    db_path = "src/database/sqlite/bases/guilds.db"
+    db_path = "src/database/sqlite/guilds.db"
 
 if dbstatus == "mysql":
     db_host = os.getenv("DB_HOST")

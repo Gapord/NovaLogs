@@ -11,13 +11,11 @@ class UpdateMember(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_member_update(
-        self, before: disnake.Member, after: disnake.Member
-    ):
+    async def on_member_update(self, before: disnake.Member, after: disnake.Member):
         guild_data = await self.bot.db.fetch_guild_data(after.guild.id)
         if guild_data is None:
             return
-        
+
         log = self.bot.get_channel(guild_data.channel_id)
 
         changes = []
@@ -28,12 +26,8 @@ class UpdateMember(commands.Cog):
             )
 
         if before.roles != after.roles:
-            removed_roles = [
-                role for role in before.roles if role not in after.roles
-            ]
-            added_roles = [
-                role for role in after.roles if role not in before.roles
-            ]
+            removed_roles = [role for role in before.roles if role not in after.roles]
+            added_roles = [role for role in after.roles if role not in before.roles]
 
             if removed_roles:
                 changes.append(
@@ -57,9 +51,7 @@ class UpdateMember(commands.Cog):
             )
             embed.add_field(name="Пользователь", value=after.mention)
             embed.add_field(name="Дата изменения", value=current_time)
-            embed.add_field(
-                name="Изменения", value="\n".join(changes), inline=False
-            )
+            embed.add_field(name="Изменения", value="\n".join(changes), inline=False)
             await log.send(embed=embed)
 
 

@@ -20,7 +20,7 @@ class CreateEmoji(commands.Cog):
         guild_data = await self.bot.db.fetch_guild_data(guild.id)
         if guild_data is None:
             return
-        
+
         log = self.bot.get_channel(guild_data.channel_id)
 
         new_emojis = [emoji for emoji in after if emoji not in before]
@@ -37,9 +37,7 @@ class CreateEmoji(commands.Cog):
             now = datetime.datetime.now()
             current_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
-            embed = disnake.Embed(
-                title="Создание эмодзи", color=guild_data.color
-            )
+            embed = disnake.Embed(title="Создание эмодзи", color=guild_data.color)
             embed.add_field(name="Эмодзи", value=f"{emoji} (ID: {emoji.id})")
             embed.add_field(
                 name="Создано пользователем",

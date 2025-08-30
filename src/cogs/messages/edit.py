@@ -3,6 +3,7 @@ from disnake.ext import commands
 
 from src.classes.custom_client import CustomClient
 
+
 class EditMSG(commands.Cog):
     def __init__(self, bot: CustomClient):
         self.bot = bot
@@ -12,7 +13,7 @@ class EditMSG(commands.Cog):
         guild_data = await self.bot.db.fetch_guild_data(after.guild.id)
         if guild_data is None:
             return
-        
+
         log = self.bot.get_channel(guild_data.channel_id)
 
         embed = disnake.Embed(
