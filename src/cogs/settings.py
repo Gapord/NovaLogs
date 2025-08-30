@@ -31,10 +31,13 @@ class BotSettings(commands.Cog):
             color_value = colour
         else:
             color_value = colour.value
-
-        await self.bot.db.configure_guild(
-            guild_id=interaction.guild.id, color=color_value, channel_id=channel.id
-        )
+        try:
+            await self.bot.db.configure_guild(
+                guild_id=interaction.guild.id, color=color_value, channel_id=channel.id
+            )
+        except Exception as e:
+            await interaction.send(e)
+            return
 
         embed = disnake.Embed(title="Настройки сервера обновлены", color=color_value)
         embed.add_field(name="Канал логов", value=channel.mention)
